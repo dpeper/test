@@ -1,0 +1,21 @@
+version: v1.0
+name: Pipeline 2
+blocks:
+  - name: Deploying to dev
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - echo "job 1"
+  - name: Testing dev
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands: []
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+promotions:
+  - name: Deploy to stage
+    pipeline_file: pipeline_3.yml
